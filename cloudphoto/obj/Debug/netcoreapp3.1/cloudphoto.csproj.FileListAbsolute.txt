@@ -1,0 +1,17 @@
+D:\Repositories\cloud_photo_rep\cloudphoto\bin\Debug\netcoreapp3.1\cloudphoto.exe
+D:\Repositories\cloud_photo_rep\cloudphoto\bin\Debug\netcoreapp3.1\cloudphoto.deps.json
+D:\Repositories\cloud_photo_rep\cloudphoto\bin\Debug\netcoreapp3.1\cloudphoto.runtimeconfig.json
+D:\Repositories\cloud_photo_rep\cloudphoto\bin\Debug\netcoreapp3.1\cloudphoto.runtimeconfig.dev.json
+D:\Repositories\cloud_photo_rep\cloudphoto\bin\Debug\netcoreapp3.1\cloudphoto.dll
+D:\Repositories\cloud_photo_rep\cloudphoto\bin\Debug\netcoreapp3.1\cloudphoto.pdb
+D:\Repositories\cloud_photo_rep\cloudphoto\bin\Debug\netcoreapp3.1\AWSSDK.Core.dll
+D:\Repositories\cloud_photo_rep\cloudphoto\bin\Debug\netcoreapp3.1\AWSSDK.S3.dll
+D:\Repositories\cloud_photo_rep\cloudphoto\obj\Debug\netcoreapp3.1\cloudphoto.csproj.AssemblyReference.cache
+D:\Repositories\cloud_photo_rep\cloudphoto\obj\Debug\netcoreapp3.1\cloudphoto.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repositories\cloud_photo_rep\cloudphoto\obj\Debug\netcoreapp3.1\cloudphoto.AssemblyInfoInputs.cache
+D:\Repositories\cloud_photo_rep\cloudphoto\obj\Debug\netcoreapp3.1\cloudphoto.AssemblyInfo.cs
+D:\Repositories\cloud_photo_rep\cloudphoto\obj\Debug\netcoreapp3.1\cloudphoto.csproj.CoreCompileInputs.cache
+D:\Repositories\cloud_photo_rep\cloudphoto\obj\Debug\netcoreapp3.1\cloudphoto.csproj.CopyComplete
+D:\Repositories\cloud_photo_rep\cloudphoto\obj\Debug\netcoreapp3.1\cloudphoto.dll
+D:\Repositories\cloud_photo_rep\cloudphoto\obj\Debug\netcoreapp3.1\cloudphoto.pdb
+D:\Repositories\cloud_photo_rep\cloudphoto\obj\Debug\netcoreapp3.1\cloudphoto.genruntimeconfig.cache

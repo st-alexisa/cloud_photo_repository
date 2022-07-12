@@ -1,0 +1,60 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "cloudphoto/1.0.0": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.12.6",
+          "AWSSDK.S3": "3.7.9.22"
+        },
+        "runtime": {
+          "cloudphoto.dll": {}
+        }
+      },
+      "AWSSDK.Core/3.7.12.6": {
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.12.6"
+          }
+        }
+      },
+      "AWSSDK.S3/3.7.9.22": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.12.6"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.S3.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.9.22"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "cloudphoto/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AWSSDK.Core/3.7.12.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uwXtdOQoLtWGo59Eg9SI1BclXg+42gk1gTizz2QOlOgBvsfNuXejyIvzolrfcQxU2bQOgH81sB9PvPaDz3EcuA==",
+      "path": "awssdk.core/3.7.12.6",
+      "hashPath": "awssdk.core.3.7.12.6.nupkg.sha512"
+    },
+    "AWSSDK.S3/3.7.9.22": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4Im2I09PEL7hyxSO9qoCMPlTtUE96gX50QfGcs6XR8MbqVrG7XghlyMirc9Dtn50O9UeifzBclaSjKyfDzY5hQ==",
+      "path": "awssdk.s3/3.7.9.22",
+      "hashPath": "awssdk.s3.3.7.9.22.nupkg.sha512"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "SDxfJW0z54u2Gj1J+Z30Heu13tsXTFcenrenk4HASp9TkW8IFTPeAkguPJ2J69lcBtPdY1ou4r8Egj5cvdGyAQ==",
+  "success": true,
+  "projectFilePath": "D:\\Repositories\\cloud_photo_rep\\cloudphoto\\cloudphoto.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fullf\\.nuget\\packages\\awssdk.core\\3.7.12.6\\awssdk.core.3.7.12.6.nupkg.sha512",
+    "C:\\Users\\fullf\\.nuget\\packages\\awssdk.s3\\3.7.9.22\\awssdk.s3.3.7.9.22.nupkg.sha512"
+  ],
+  "logs": []
+}
