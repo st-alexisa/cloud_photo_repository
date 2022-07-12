@@ -5,6 +5,7 @@ using Amazon.S3.Transfer;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Amazon.S3.Model;
 
 namespace cloudphoto
 {
@@ -24,6 +25,20 @@ namespace cloudphoto
             return true;
         }
         
+        public static bool DownloadFiles(AmazonS3Client client, string bucketName, string localDirectoryPath,
+            string cloudAlbumName)
+        {;
+            var utility = new TransferUtility(client);  
+            
+            var response = client.ListObjectsAsync(bucketName, cloudAlbumName);
+            foreach (var obj in response.Result.S3Objects)
+            {
+                var filePath = localDirectoryPath + '/' + obj.Key.Split('/').Last();
+                utility.Download(filePath, bucketName, obj.Key);
+            }
+            return true;
+        }
+
         private static string ConvertToUnixTypePath(string path)
         {
             var builder = new StringBuilder();

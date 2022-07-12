@@ -35,10 +35,6 @@ namespace cloudphoto
                 return ;
             }
 
-            // if (CloudManager.UploadFiles(client, bucketName, args[4], args[2]))
-            //     Console.WriteLine("success");
-            // else 
-            //     Console.WriteLine("failed");
             if (TryExecuteCommand(client, bucketName, command, args))
                 Console.WriteLine("Command executed successfully");
             else 
@@ -71,7 +67,12 @@ namespace cloudphoto
                 if (!CloudManager.UploadFiles(client, bucketName, pathName, albumName))
                     return false;
             }
-            
+            else if (command == CommandParser.CommandType.Download)
+            {
+                if (!CloudManager.DownloadFiles(client, bucketName, pathName, albumName))
+                    return false;
+            }
+
             foreach (var arg in args)
             {
                 Console.WriteLine(arg);
