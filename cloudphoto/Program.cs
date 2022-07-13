@@ -77,6 +77,12 @@ namespace cloudphoto
                 if (! await CloudManager.PrintAlbumsList(client, bucketName))
                     return false;
             }
+            else if (command == CommandParser.CommandType.ListPhotos)
+            {
+                if (! await CloudManager.PrintPhotosList(client, bucketName, albumName))
+                    return false;
+            }
+
             return true;
         }
     }
