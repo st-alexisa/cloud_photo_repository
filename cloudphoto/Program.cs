@@ -35,13 +35,13 @@ namespace cloudphoto
                 return ;
             }
 
-            if (TryExecuteCommand(client, bucketName, command, args))
+            if (await TryExecuteCommand(client, bucketName, command, args))
                 Console.WriteLine("Command executed successfully");
             else 
                 Console.WriteLine("Command execution failed");
         }
 
-        private static bool TryExecuteCommand(AmazonS3Client client, string bucketName, 
+        private static async Task<bool> TryExecuteCommand(AmazonS3Client client, string bucketName, 
                 CommandParser.CommandType? command, string[] args)
         {
             string albumName;
@@ -72,10 +72,10 @@ namespace cloudphoto
                 if (!CloudManager.DownloadFiles(client, bucketName, pathName, albumName))
                     return false;
             }
-
-            foreach (var arg in args)
+            else if (command == CommandParser.CommandType.ListAlbums)
             {
-                Console.WriteLine(arg);
+                if (! await CloudManager.PrintAlbumsList(client, bucketName))
+                    return false;
             }
             return true;
         }
