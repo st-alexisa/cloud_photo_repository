@@ -47,14 +47,15 @@ namespace cloudphoto
         
         public static bool UploadFiles(AmazonS3Client client, string bucketName, string localDirectoryPath, string cloudAlbumName)
         {
+            var utility = new TransferUtility(client);
+            
             var files = Directory
                 .EnumerateFiles(localDirectoryPath, "*.jpg")
                 .Select(ConvertToUnixTypePath);
             foreach (var filePath in files)
             {
                 var fileName = filePath.Split('/').Last();
-                if (!UploadFileToCloud(client, filePath, bucketName, cloudAlbumName + '/' + fileName))
-                    return false;
+                utility.Upload(filePath, bucketName, cloudAlbumName + '/' + fileName);
             }
             return true;
         }
@@ -79,18 +80,6 @@ namespace cloudphoto
             foreach (var c in path)
                 builder.Append(c != '\\' ? c : '/');
             return builder.ToString();
-        }
-
-        private static bool UploadFileToCloud(AmazonS3Client client, string localFilePath, string bucketName, string fileNameInCloud)  
-        {
-            var utility = new TransferUtility(client);  
-            var request = new TransferUtilityUploadRequest();  
-
-            request.BucketName = bucketName;
-            request.Key = fileNameInCloud; //file name up in S3  
-            request.FilePath = localFilePath;
-            utility.Upload(request); //commensing the transfer 
-            return true; //indicate that the file was sent  
         }
     }
 }
