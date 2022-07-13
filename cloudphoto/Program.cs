@@ -1,13 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Amazon.S3;
-using Amazon.S3.Model;
-using System.Collections;
-using System.Collections.Generic;
-using Amazon.S3.Transfer; 
-using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace cloudphoto
 {
@@ -44,46 +37,21 @@ namespace cloudphoto
         private static async Task<bool> TryExecuteCommand(AmazonS3Client client, string bucketName, 
                 CommandParser.CommandType? command, string[] args)
         {
-            string albumName;
-            string pathName;
+            if (!CommandParser.TryParseArguments(args, out var albumName, out var pathName))
+                return false;
 
-            switch (args[1])
-            {
-                case "--album" when args[3] == "--path":
-                    albumName = args[2];
-                    pathName = args[4];
-                    break;
-                case "--path" when args[3] == "--album":
-                    pathName = args[2];
-                    albumName = args[4];
-                    break;
-                default:
-                    Console.Error.WriteLine("Wrong options");
-                    return false;
-            }
-
-            if (command == CommandParser.CommandType.Upload)
-            {
-                if (!CloudManager.UploadFiles(client, bucketName, pathName, albumName))
-                    return false;
-            }
-            else if (command == CommandParser.CommandType.Download)
-            {
-                if (!CloudManager.DownloadFiles(client, bucketName, pathName, albumName))
-                    return false;
-            }
-            else if (command == CommandParser.CommandType.ListAlbums)
-            {
-                if (! await CloudManager.PrintAlbumsList(client, bucketName))
-                    return false;
-            }
-            else if (command == CommandParser.CommandType.ListPhotos)
-            {
-                if (! await CloudManager.PrintPhotosList(client, bucketName, albumName))
-                    return false;
-            }
-
-            return true;
+            if (command == CommandParser.CommandType.Upload && args.Length == 5
+                            && pathName != null && albumName != null)
+                return CloudManager.UploadFiles(client, bucketName, pathName, albumName);
+            if (command == CommandParser.CommandType.Download && args.Length == 5
+                            && pathName != null && albumName != null)
+                return CloudManager.DownloadFiles(client, bucketName, pathName, albumName);
+            if (command == CommandParser.CommandType.ListAlbums && args.Length == 1)
+                return await CloudManager.PrintAlbumsList(client, bucketName);
+            if (command == CommandParser.CommandType.ListPhotos && args.Length == 3 && albumName != null) 
+                return await CloudManager.PrintPhotosList(client, bucketName, albumName);
+            Console.WriteLine("Wrong arguments");
+            return false;
         }
     }
 
@@ -96,6 +64,20 @@ namespace cloudphoto
             ListAlbums,
             ListPhotos,
             GenerateSite
+        }
+
+        public static bool TryParseArguments(string[] args, out string albumName, out string pathName)
+        {
+            albumName = null;
+            pathName = null;
+            for (int i = 0; i < args.Length; i++)
+            {
+                if (args[i] == "--path" && i + 1 < args.Length)
+                    pathName = args[++i];
+                else if (args[i] == "--album" && i + 1 < args.Length)
+                    albumName = args[++i];
+            }
+            return true;
         }
 
         public static CommandType? ParseCommand(string cmdString)
